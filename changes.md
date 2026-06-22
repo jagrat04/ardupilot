@@ -12,3 +12,10 @@
 
 - Scheduler task parameters are: `400` Hz, `50` microseconds budget, `20` priority.
 - Initialization occurs before the normal scheduler loop begins, during Copter startup.
+
+## build command
+
+`
+./waf configure --board sitl
+./waf copter
+`
