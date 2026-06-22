@@ -111,6 +111,7 @@ SCHED_TASK_CLASS arguments:
 
  */
 const AP_Scheduler::Task Copter::scheduler_tasks[] = {
+    SCHED_TASK_CLASS(Copter, &copter,torque_control_update, 400, 50, 20), // <------------------
     // update INS immediately to get current gyro data populated
     FAST_TASK_CLASS(AP_InertialSensor, &copter.ins, update),
     // run low level rate controllers that only require IMU data
@@ -585,6 +586,7 @@ bool Copter::current_mode_requires_mission() const
 
 // rc_loops - reads user input from transmitter/receiver
 // called at 100hz
+void Copter::torque_control_update() { torque_ctrl.update(); }
 void Copter::rc_loop()
 {
     // Read radio and 3-position switch on radio

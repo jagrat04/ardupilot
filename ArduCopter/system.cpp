@@ -37,6 +37,9 @@ void Copter::init_ardupilot()
     // setup telem slots with serial ports
     gcs().setup_uarts();
 
+    // initialize custom torque control library before the scheduler starts
+    torque_ctrl.init();
+
 #if OSD_ENABLED
     osd.init();
 #endif
